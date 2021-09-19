@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.happyplaces.MapActivity
 import com.example.happyplaces.R
 import com.example.happyplaces.models.HappyPlaceModel
 import kotlinx.android.synthetic.main.activity_happy_place_detail.*

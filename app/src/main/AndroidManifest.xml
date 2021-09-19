@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HappyPlaces">
         <activity
-            android:name=".MapActivity"
+            android:name=".activities.MapActivity"
             android:label="HAPPY PLACE MAP"
             android:screenOrientation="portrait"
             android:theme="@style/CustomNoActionBarTheme" />
