@@ -132,7 +132,7 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                         Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
                     } else -> {
                         val happyPlaceModel = HappyPlaceModel(
-                            0,
+                            if (mHappyPlaceDetails == null) 0 else mHappyPlaceDetails!!.id,
                             et_title.text.toString(),
                             saveImageToInternalStorage.toString(),
                             et_description.text.toString(),
@@ -142,10 +142,18 @@ class AddHappyPlaceActivity : AppCompatActivity(), View.OnClickListener {
                             mLongitude
                         )
                     val dbHandler = DatabaseHandler(this)
-                    val addHappyPlaceResult = dbHandler.addHappyPlace(happyPlaceModel)
-                    if (addHappyPlaceResult > 0) {
-                        setResult(Activity.RESULT_OK)
-                        finish()
+                    if (mHappyPlaceDetails == null) {
+                        val addHappyPlaceResult = dbHandler.addHappyPlace(happyPlaceModel)
+                        if (addHappyPlaceResult > 0) {
+                            setResult(Activity.RESULT_OK)
+                            finish()
+                        }
+                    } else {
+                        val updateHappyPlaceResult = dbHandler.updateHappyPlace(happyPlaceModel)
+                        if (updateHappyPlaceResult > 0) {
+                            setResult(Activity.RESULT_OK)
+                            finish()
+                        }
                     }
                     }
                 }
